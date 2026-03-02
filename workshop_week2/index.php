@@ -14,7 +14,7 @@
     </h1>
 </header>
 <?php
-    // Een extern betand toevoegen
+    // Een extern bestand toevoegen
     include "include/header.php";
     include "include/functions.php";
     echo trafficlight("green",false);
@@ -28,7 +28,7 @@
     ?>
 </main>
 <footer>
-    <p> dit is mijn foorter</p>
+    <p> Dit is mijn footer</p>
     <?php
 
 
