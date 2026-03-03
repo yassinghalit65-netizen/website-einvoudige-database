@@ -3,7 +3,7 @@
  * name: Y.ghalit
  * Date: 24-02-2026
  * Formulier: introductie
- */
+  */
 ?>
 <form method="post" action="resultaat.php">
     <p>
@@ -24,6 +24,11 @@
     <input type="email" name="email">
     </p>
 
-    <input type="submit" value="vertuur nu">
+    <p>
+    <label for="age">leeftijd</label>
+    <input type="number" name="leeftijd" id="age">
+    </p>
+
+    <input type="submit" name="form_verzonden" value="vertuur nu">
 
 </form>
