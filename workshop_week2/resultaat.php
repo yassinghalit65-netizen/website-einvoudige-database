@@ -14,13 +14,13 @@ if(isset($_POST["form_verzonden"]))
     $email=$_POST['email'];
     $leeftijd=$_POST['leeftijd'];
 
-    echo "<br>naam"$naam;
+    echo $naam;
 
-    echo "<br>leeftijd"$leeftijd +10;
+    echo $leeftijd +10;
 
 
 
-    echo "<br>email"$email;
+    echo $email;
 
 
     if(isset($_POST["Gender"]))
