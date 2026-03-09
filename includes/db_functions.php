@@ -1,9 +1,11 @@
 <?php
 
+
 global $conn;
 
 
-function StartConnection($dbname){
+function StartConnection($dbname)
+{
 
     global $conn;
 
@@ -20,20 +22,19 @@ function StartConnection($dbname){
 
         return $conn;
 
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo "Verbinding mislukt: " . $e->getMessage();
     }
 }
 
-function ExecuteSelectQuery($query){
+function ExecuteSelectQuery($query)
+{
 
     global $conn;
 
     try {
 
         //$conn = startConnection($dbname);
-
         $stmt = $conn->prepare($query);
         $stmt->execute();
 
@@ -41,11 +42,10 @@ function ExecuteSelectQuery($query){
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo "Query fout: " . $e->getMessage();
         return [];
     }
 }
 
-?>
+
