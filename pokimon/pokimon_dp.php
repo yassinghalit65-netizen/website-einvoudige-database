@@ -1,4 +1,10 @@
 
+<?php
+include "../includes/db_functions.php";
+
+StartConnection("pokemondb");
+?>
+
 
 <!doctype html>
 <html lang="en">
@@ -15,12 +21,29 @@
     <p>pokedex</p>
     <form action="pokimon_dp.php" method="GET">
     <fieldset>
+
         <label> zoeken</label>
+        <select id="type"  name="searchType1">
+            <?php
+        $type1Quary ="SELECT DISTINCT type1 FROM pokemon";
+
+        $type1 = ExecuteSelectQuery($type1Quary);
+
+        foreach ($type1 as $item)
+        {
+            echo "<option>" . $item["type1"] . "</option>";
+        }
+        ?>
+        </select>
+
         <input type="text" name="searchname">
 
-        <input type="submit" name="searchForm" value="Zoeken"
+        <input type="submit" name="searchForm" value="Zoeken";
+
     </fieldset>
     </form>
+
+
 
 
     <?php
@@ -28,18 +51,19 @@
     if(isset($_GET["searchForm"]))
     {
         $searchName = $_GET["searchname"];
+        $searchType1 = $_GET["searchType1"];
+        if(isset($searType1))
+        {
+            $quary ="SELECT * FROM pokemon WHERE type1 = '$searchType1' AND name LIKE '%$searchName%' ;";
+        }
 
         $query ="SELECT * FROM pokemon WHERE name LIKE '%$searchName%'";
+        echo "<div><h2></h2>u heeft gezocht op". $searchName ."</h2></div>";
     }
     else
     {
         $query = "SELECT * FROM pokemon;";
     }
-
-
-    include "../includes/db_functions.php";
-
-    StartConnection("pokemondb");
 
 
 
@@ -54,6 +78,7 @@
         echo "</article>";
     }
     ?>
+    <
 
 </main>
 </body>
