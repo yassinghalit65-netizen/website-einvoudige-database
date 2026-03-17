@@ -22,7 +22,7 @@ StartConnection("pokemondb");
     <form action="pokimon_dp.php" method="GET">
     <fieldset>
 
-        <label> zoeken</label>
+        <label> zoekbalk</label>
         <select id="type"  name="searchType1">
             <?php
         $type1Quary ="SELECT DISTINCT type1 FROM pokemon";
