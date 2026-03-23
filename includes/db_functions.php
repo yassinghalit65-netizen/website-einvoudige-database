@@ -1,8 +1,5 @@
 <?php
-
-
 global $conn;
-
 
 function StartConnection($dbname)
 {
@@ -45,6 +42,19 @@ function ExecuteSelectQuery($query)
     } catch (PDOException $e) {
         echo "Query fout: " . $e->getMessage();
         return [];
+    }
+}
+function ExucuteQuery($quary){
+    global $conn;
+    try {
+        $result = $conn->exec($quary);
+
+        //exec() geeft direct aantal affected row terug
+        return $result;
+    }
+    catch(PDOExeption $e){
+        echo "Quary fout" . $e->getMessege();
+        return 0;
     }
 }
 

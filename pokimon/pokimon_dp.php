@@ -1,7 +1,5 @@
-
 <?php
 include "../includes/db_functions.php";
-
 StartConnection("pokemondb");
 ?>
 
@@ -20,11 +18,13 @@ StartConnection("pokemondb");
 <main>
     <p>pokedex</p>
     <form action="pokimon_dp.php" method="GET">
+        <a href="pokimontoevoegen.php">voeg toe</a>
     <fieldset>
 
         <label> zoekbalk</label>
         <select id="type"  name="searchType1">
             <?php
+
         $type1Quary ="SELECT DISTINCT type1 FROM pokemon";
 
         $type1 = ExecuteSelectQuery($type1Quary);
@@ -41,6 +41,7 @@ StartConnection("pokemondb");
         <input type="submit" name="searchForm" value="Zoeken";
 
     </fieldset>
+
     </form>
 
 
@@ -72,13 +73,17 @@ StartConnection("pokemondb");
     foreach ($result as $row) {
         $name = $row["name"];
         $img = $row["picture"];
+        $number =$row["number"];
+
         echo "<article>";
         echo $row["name"] . "<br>";
         echo "<img src='$img' alt='$name' width='50'>";
+        echo "<a href='pokimon_bewerken.php?pokemonNumber=$number'>bewerken<a/> ";
         echo "</article>";
+
     }
     ?>
-    <
+
 
 </main>
 </body>
