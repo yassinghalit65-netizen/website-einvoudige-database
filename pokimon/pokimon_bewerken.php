@@ -29,25 +29,25 @@
 
 <?php
 
-$pokemonNumber = $_GET["Number"];
+$pokemonNumber = $_GET["pokemonNumber"];
 
 
 $query = "SELECT * FROM pokemon WHERE number = $pokemonNumber;";
 
 include "../includes/db_functions.php";
 
-StartConnection("pokemonNumber");
+StartConnection("pokemonDB");
 
 $result = ExecuteSelectQuery($query);
 $current = $result[0];
 
-$currentNumber = $current["pokemonNumber"];
-$currentName = $current["pokemonName"];
-$currentType1 = $current["pokemonType1"];
-$currentType2 = $current["pokemonType2"];
-$currentAbility = $current["pokemonAbility"];
-$currentSpecies = $current["pokemonSpecies"];
-$currentPicture = $current["pokemonPicture"];
+$currentNumber = $current["number"];
+$currentName = $current["name"];
+$currentType1 = $current["type1"];
+$currentType2 = $current["type2"];
+$currentAbility = $current["ability"];
+$currentSpecies = $current["species"];
+$currentPicture = $current["picture"];
 
 
 
@@ -61,6 +61,8 @@ if(isset($_POST["submitForm"])) {
     $ability = $_POST["pokemonAbility"];
     $species = $_POST["pokemonSpecies"];
     $picture = $_POST["pokemonPicture"];
+
+    $updatequery = "UPDATE";
 
     echo $query = "INSERT INTO pokemon VALUES ('$number','$name','$type1', '$type2', '$ability', '$species', '$picture');";
 
