@@ -37,8 +37,43 @@ $query = "SELECT * FROM pokemon WHERE number = $pokemonNumber;";
 include "../includes/db_functions.php";
 
 StartConnection("pokemonDB");
+if(isset($_POST["submitForm"])) {
+    // var_dump($_POST);
+    $number = $_POST["pokemonNumber"];
+    $name = $_POST["pokemonName"];
+    $type1 = $_POST["pokemonType1"];
+    $type2 = $_POST["pokemonType2"];
+    $ability = $_POST["pokemonAbility"];
+    $species = $_POST["pokemonSpecies"];
+    $picture = $_POST["pokemonPicture"];
 
+    $updatequery = "UPDATE pokemon SET name='$name', number= '$number', type1='$type1', type2='$type2', ability='$ability',spectirs='$species',picture='$picture' WHERE number = $pokemonNumber;";
+
+    $rowseAffected = ExucuteQuery($updatequery);
+    if($rowseAffected >=1 ){
+        echo "Pokemon succesvol verwerkt";
+    }
+    else{
+        echo "Helaas er is iet mis gegaan";
+    }
+
+
+    include "../includes/db_functions.php";
+
+    StartConnection("pokimondb");
+
+    $rowseAffected = ExucuteQuery($query);
+
+    if ($rowseAffected >= 1) {
+        echo "u heeft een pokemon toegevoegd";
+
+    } else {
+        echo "Helaas het is fout gegaan";
+    }
+}
+// gegevens van pokemon ophalen
 $result = ExecuteSelectQuery($query);
+//hier maken we een array van
 $current = $result[0];
 
 $currentNumber = $current["number"];
@@ -49,42 +84,14 @@ $currentAbility = $current["ability"];
 $currentSpecies = $current["species"];
 $currentPicture = $current["picture"];
 
+$currentquery = "";
 
 
-if(isset($_POST["submitForm"])) {
-    // var_dump($_POST);
-
-    $number = $_POST["pokemonNumber"];
-    $name = $_POST["pokemonName"];
-    $type1 = $_POST["pokemonType1"];
-    $type2 = $_POST["pokemonType2"];
-    $ability = $_POST["pokemonAbility"];
-    $species = $_POST["pokemonSpecies"];
-    $picture = $_POST["pokemonPicture"];
-
-    $updatequery = "UPDATE";
-
-    echo $query = "INSERT INTO pokemon VALUES ('$number','$name','$type1', '$type2', '$ability', '$species', '$picture');";
-
-
-    include "../includes/db_functions.php";
-
-    StartConnection("pokimondb");
-
-    $rowseffected = ExucuteQuery($query);
-
-    if ($rowseffected >= 1) {
-        echo "u heeft een pokemon toegevoegd";
-
-    } else {
-        echo "Helaas het is fout gegaan";
-    }
-}
 
 
 
 ?>
-<form action="pokimon_bewerken.php" method="POST" name="bewerken">
+<form action="pokimon_bewerken.php?pokemonNumber=<?php echo $pokemonNumber;?>" method="POST" name="bewerken">
     <fieldset>
 
         <p>
