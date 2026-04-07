@@ -40,7 +40,7 @@ if(isset($_POST["submitForm"])) {
     echo $query = "INSERT INTO pokemon VALUES ('$number','$name','$type1', '$type2', '$ability', '$species', '$picture');";
 
 
-    include "../includes/db_functions.php";
+    include "../includes/dp_functions.php";
 
     StartConnection("pokimondb");
 

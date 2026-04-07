@@ -34,7 +34,7 @@ $pokemonNumber = $_GET["pokemonNumber"];
 
 $query = "SELECT * FROM pokemon WHERE number = $pokemonNumber;";
 
-include "../includes/db_functions.php";
+include "../includes/dp_functions.php";
 
 StartConnection("pokemonDB");
 if(isset($_POST["submitForm"])) {

@@ -1,5 +1,5 @@
 <?php
-include "../includes/db_functions.php";
+include "../includes/dp_functions.php";
 StartConnection("pokemondb");
 ?>
 
